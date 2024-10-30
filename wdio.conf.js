@@ -28,8 +28,9 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        'test/specs/edwise.spec.js'
+        'test/specs/**/*.spec.js'  // Matches all .spec.js files in the specs directory and subdirectories
     ],
+    
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
