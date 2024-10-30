@@ -1,53 +1,41 @@
-name: Run WebdriverIO Tests
-
+name: Edwise workflow
 on:
-  push:
-    branches:
-      - main  # Runs on pushes to the main branch
-  pull_request:
-    branches:
-      - main  # Runs on pull requests to the main branch
-
+    workflow_dispatch: # This allows manual triggering of the workflow
+     
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Step 1: Check out the code
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # Step 2: Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'  # Adjust as needed
-
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Step 4: Run WebdriverIO Tests
-      - name: Run WebdriverIO tests
-        run: npm run wdio
-
-      # Step 5: Generate Allure Report
-      - name: Generate Allure report
-        run: |
-          allure generate test/.artifacts/allure-results --clean -o test/.artifacts/allure-report || exit 0
-        continue-on-error: true
-
-      # Optional: Upload Allure Report as an Artifact
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: test/.artifacts/allure-report
-
-      # Optional: Publish Allure Report to GitHub Pages (if needed)
-      # - name: Deploy Allure Report to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   if: success()
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: test/.artifacts/allure-report
+    test:
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+        runs-on: ubuntu-latest
+        name: UI tests
+        steps:
+            - uses: actions/checkout@v3
+           
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  cache: npm
+           
+            - name: Install packages
+              run: npm install
+           
+            - name: Execute tests
+              run: npm run wdio
+           
+            - name: Install Allure CommandLine
+              if: always()
+              run: npm install -g allure-commandline
+           
+            - name: Combine Allure
+              if: always()
+              run: npm run allureCombine
+           
+            - name: Upload Test Report
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Allure report
+                  path: test/.artifacts/allure-report/complete.html # Ensure this path is correc
