@@ -1,41 +1,41 @@
 name: Edwise workflow
 on:
-  workflow_dispatch:  # Allows manual triggering of the workflow
-
+    workflow_dispatch: # This allows manual triggering of the workflow
+     
 jobs:
-  test:
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    name: UI tests
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install packages
-        run: npm install
-
-      - name: Execute tests
-        run: npx wdio run ./wdio.conf.js  # Use npx to avoid permission issues
-
-      - name: Install Allure CommandLine
-        if: always()
-        run: npm install -g allure-commandline
-
-      - name: Combine Allure Results
-        if: always()
-        run: allure generate test/.artifacts/allure-results -o test/.artifacts/allure-report || echo "Allure report generation failed"  
-
-      - name: Upload Test Report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Allure report
-          path: test/.artifacts/allure-report/  # Ensure correct path here
+    test:
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+        runs-on: ubuntu-latest
+        name: UI tests
+        steps:
+            - uses: actions/checkout@v3
+           
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  cache: npm
+           
+            - name: Install packages
+              run: npm install
+           
+            - name: Execute tests
+              run: npm run wdio
+           
+            - name: Install Allure CommandLine
+              if: always()
+              run: npm install -g allure-commandline
+           
+            - name: Combine Allure
+              if: always()
+              run: npm run allureCombine
+           
+            - name: Upload Test Report
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Allure report
+                  path: test/.artifacts/allure-report/complete.html
