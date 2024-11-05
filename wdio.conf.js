@@ -61,7 +61,7 @@ export const config = {
         // capabilities for local browser web tests
         browserName: 'chrome' ,
         'goog:chromeOptions': {
-            args: [  '--disable-gpu', '--window-size=1920,1080'],
+            args: [ '--headless', '--disable-gpu', '--window-size=1920,1080'],
         },
         // or "firefox", "microsoftedge", "safari"
     }],
