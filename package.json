@@ -14,7 +14,8 @@
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "full_suite": "wdio run wdio.config.js --suit full_suite",
-    "openReport": "allure open test/.artifacts/allure-report"
+    "openReport": "allure open test/.artifacts/allure-report",
+    "allureCombine": "allure generate --clean && allure open"
   },
   "dependencies": {
     "allure-single-html-file-js": "^0.0.6",
