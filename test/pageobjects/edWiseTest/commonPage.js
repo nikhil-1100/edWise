@@ -1,7 +1,7 @@
 export default class CommonPage{
 
     constructor(){
-    this.$loader = () => $(`//legend//div[@class="lds-spinner"]`);
+    this.$loader = () => $(`(//div[@class="lds-spinner"])[1]`);
     this.$changeRequestHeader=()=>$(`//h6[text()="Change Requests"]`) 
     }
 

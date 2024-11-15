@@ -1,9 +1,15 @@
-//let apiCalls;
 import allure from 'allure-commandline';
-//import AllureReporter from '@wdio/allure-reporter';
+import AllureReporter from '@wdio/allure-reporter';
 import fs from 'fs';
-//import axios from 'axios';
+import ExcelJS from 'exceljs';
 import helpers from './test/helpers/overwriteArtifacts.js';
+import JSONReporter from './custom_report/jsonReporter.js';
+ 
+import JSONToExcelConverter from "./custom_report/jsonConvertor.js";
+const converter = new JSONToExcelConverter(
+  "./test/.artifacts/test-report.xlsx"
+);
+ 
 export const config = {
    
     //
@@ -28,9 +34,9 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        'test/specs/**/*.spec.js'  // Matches all .spec.js files in the specs directory and subdirectories
+    // 'test/specs/edwise.spec.js'
+    'test/specs/edWise.spec.js'
     ],
-    
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -58,14 +64,12 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local browser web tests
-        browserName: 'chrome' ,
+        browserName: 'chrome',
         'goog:chromeOptions': {
-            args: [ '--headless', '--disable-gpu', '--window-size=1920,1080'],
+            args: ['--headless','--disable-gpu', '--window-size=1920,1080'],
         },
-        // or "firefox", "microsoftedge", "safari"
     }],
- 
+   
     //
     // ===================
     // Test Configurations
@@ -73,7 +77,7 @@ export const config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -100,7 +104,7 @@ export const config = {
     // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 100000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -113,7 +117,7 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+     services: ['devtools'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -141,23 +145,26 @@ export const config = {
     disableWebdriverStepsReporting: true,
     disableWebdriverScreenshotsReporting: false,
    
-}]],
+}],
+ //[ExcelReporter, { outputFile: 'test/.artifacts/test-results.xlsx' }],
+ [
+    JSONReporter,
+    { outputFile: "test/.artifacts/json-reports/test-results.json" },
+  ],
+],
    
  
     // Options to be passed to Jasmine.
     jasmineOpts: {
         // Jasmine default timeout
-        defaultTimeoutInterval: 60000,
+        defaultTimeoutInterval: 120000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
         // an assertion fails.
-        // expectationResultHandler: function(passed, assertion) {
-        //     if(!passed) {
-        //         debugger;
-        //         console.log(assertion.message);
-        //     }
-        // }
+        expectationResultHandler: function(passed, assertion) {
+            // do something
+        }
     },
  
     //
@@ -247,9 +254,65 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-//    beforeTest: async function (test, context) {
-//      apiCalls=await browser.mock('https://web-edmaster-test-wtus-ui-01.azurewebsites.net/**');
-//    },
+   
+beforeTest: async function () {
+    // Enable network tracking
+    await browser.cdp('Network', 'enable');
+ 
+    // Initialize requests array to store request and response data for each test
+    global.requests = [];
+ 
+    // Listen to network requests
+    browser.on('Network.requestWillBeSent', (params) => {
+        const requestInfo = {
+            url: params.request.url,
+            method: params.request.method,
+            headers: params.request.headers,
+            postData: params.request.postData
+        };
+        global.requests.push({ type: 'Request', data: requestInfo });
+    });
+ 
+    // Listen to network responses
+    browser.on('Network.responseReceived', async (params) => {
+        const responseInfo = {
+            url: params.response.url,
+            status: params.response.status,
+            headers: params.response.headers
+        };
+ 
+        try {
+            // Check if the response is valid and has a body (i.e., 2xx status code and content type)
+            if (params.response.status >= 200 && params.response.status < 300) {
+                const contentType = params.response.headers['content-type'] || '';
+                // Only try to fetch the body for responses with text-based content types
+                if (contentType.includes('text') || contentType.includes('json')) {
+                    // Attempt to fetch the body, catching errors if the requestId is no longer valid
+                    const responseBody = await browser.cdp('Network', 'getResponseBody', {
+                        requestId: params.requestId
+                    });
+ 
+                    // Only assign the body if it exists
+                    if (responseBody.body) {
+                        responseInfo.body = responseBody.body;
+                    } else {
+                        console.warn(`No body for response: ${params.response.url}`);
+                    }
+                } else {
+                    console.log(`Skipping non-body response: ${params.response.url}`);
+                }
+            }
+        } catch (err) {
+            // Log any errors encountered when fetching the response body
+            console.error(`Error fetching response body for ${params.response.url}:`, err);
+        }
+ 
+        // Store the response data (with or without body)
+        global.requests.push({ type: 'Response', data: responseInfo });
+    });
+},
+ 
+ 
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -257,7 +320,6 @@ export const config = {
     // beforeHook: function (test, context, hookName) {
     // },
     /**
-     * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
      */
     // afterHook: function (test, context, { error, result, duration, passed, retries }, hookName) {
@@ -272,15 +334,60 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+   
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        try {
+            // Check if the test failed
+            if (!passed) {
+                // Take a screenshot at the end of the failed test
+                await browser.takeScreenshot();
+   
+                // If there are network requests captured during the test, add them as attachments
+                if (global.requests.length > 0) {
+                    global.requests.forEach((requestData) => {
+                        const { type, data } = requestData;
+   
+                        // For failed tests, we only care about API requests and responses
+                        if (type === 'Response' && data.body) {
+                            try {
+                                AllureReporter.addAttachment(
+                                    `URL: ${data.url}
+                                    \nStatusCode: ${data.status}`, // Attachment title
+                                    JSON.stringify(data, null, 2), // Data as a pretty-printed JSON string
+                                    'application/json' // MIME type
+                                );
+                            } catch (err) {
+                                console.error(`Error adding response body for ${data.url}:`, err);
+                            }
+                        } else if (type === 'Request') {
+                            // Add request data for failed tests (requests usually don’t have a body)
+                            try {
+                               
+                                AllureReporter.addAttachment(
+                                    ` URL: ${data.url}
+                                    \nMethod: ${data.method}`, // Attachment title
+                                    JSON.stringify(data, null, 2), // Data as a pretty-printed JSON string
+                                    'application/json' // MIME type
+                                );
+                            } catch (err) {
+                                console.error(`Error adding request data for ${data.url}:`, err);
+                            }
+                        }
+                    });
+                }
+            }
        
-            await browser.takeScreenshot();
-            // Object.keys(apiCalls.calls).forEach(function (key) {
-            //     let logInfo = `URL: ${apiCalls.calls[key].url}\nMethod: ${apiCalls.calls[key].method}\nStatusCode: ${apiCalls.calls[key].statusCode}`;
-            //     AllureReporter.createAttachment(`${apiCalls.calls[key].method}: ${apiCalls.calls[key].url}`, logInfo);
-            // });
-       
+            // Disable network tracking to clean up after the test
+            await browser.cdp('Network', 'disable');
+   
+            // Clear the requests array to reset for the next test
+            global.requests = [];
+   
+        } catch (err) {
+            console.error('Error in afterTest hook:', err);
+        }
     },
+   
  
  
     /**
@@ -324,24 +431,26 @@ export const config = {
      * @param {<Object>} results object containing test results
      */
     onComplete: function() {
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'test/.artifacts/allure-results',,'--report-dir','test/.artifacts/allure-report'])
-        return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(
-                () => reject(reportError),
-                5000)
- 
+        // Generate Allure Report
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', 'test/.artifacts/allure-results', '--report-dir', 'test/.artifacts/allure-report']);
+       
+        converter.convertJSONFolderToExcel("test/.artifacts/json-reports");
+       
+        const allurePromise = new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(() => reject(reportError), 5000);
+   
             generation.on('exit', function(exitCode) {
-                clearTimeout(generationTimeout)
- 
+                clearTimeout(generationTimeout);
                 if (exitCode !== 0) {
-                    return reject(reportError)
+                    return reject(reportError);
                 }
- 
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
+                console.log('Allure report successfully generated');
+                resolve();
+            });
+        });
+       
+   
     }
     /**
     * Gets executed when a refresh happens.

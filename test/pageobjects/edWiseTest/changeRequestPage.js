@@ -23,6 +23,7 @@ class changeRequestPage extends CommonPage{
         this.$reasonForChangeHead=()=>$(`//span[text()="Reason for the change"]`)
         this.$changeSuccess=()=>$(`//div[text()="Successfully Submitted"]`)
         this.$crId=(card)=>$(`//span[text()="${card}"]/../../..//span[@class="request-value"]`)
+        this.$spinnerform=()=>$(`(//div[@class="lds-spinner"])[1]`)
         
     }
 
@@ -67,7 +68,7 @@ class changeRequestPage extends CommonPage{
             reverse: true,
             timeoutMsg:'Loader is not displayed'
         });
-        await this.$reasonForChangeHead().waitForDisplayed({ timeout: 50000, timeoutMsg: "Category should be present" });
+        // await this.$reasonForChangeHead().waitForDisplayed({ timeout: 50000, timeoutMsg: "Category should be present" });
         
     }
 

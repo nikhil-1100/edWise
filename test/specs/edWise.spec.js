@@ -1,7 +1,7 @@
 import landingPage from "../pageobjects/edWiseTest/landingPage.js";
 import selectUser from "../pageobjects/edWiseTest/selectUser.js";
 import changeRequestPage from "../pageobjects/edWiseTest/changeRequestPage.js";
-import testdata from "../testData/edWiseData.json";
+import testdata from "../testData/edWiseData.json" ;
 import approverQue from "../pageobjects/edWiseTest/approverque.js";
 
 let crId = [0, 0, 0];
@@ -11,14 +11,14 @@ let currentCrId = 0;
 
     describe('EdWise test', () => {
 
-        it(' Load the URL successfully', async () => {
+        it(' Load the URL successfully and verify the Header is present', async () => {
             await landingPage.loadUrl();
             expect(await landingPage.$header().isDisplayed())
                 .withContext('Load landing page successfully')
                 .toBeTrue();
         })
        
-        it(' Click on the config button', async () => {
+        it(' Click on the config button and verify the Select user  button is present', async () => {
             await landingPage.clickConfig();
             expect(await landingPage.$menuElements("Select User").isDisplayed())
                 .withContext('Click on the config button')
@@ -26,7 +26,7 @@ let currentCrId = 0;
         })
         for (let school of testdata.schools) {
 
-        it(` Click on the select user Button for changing details of ${school}`, async () => {
+        it(` Click on the select user Button for changing details of ${school} and verify the dropdowns are present`, async () => {
             await landingPage.clickElements("Select User");
             for (let dropdown of await selectUser.$$dropdowns()) {
                 expect(await dropdown.isDisplayed())
@@ -35,28 +35,28 @@ let currentCrId = 0;
             }
         })
 
-        it(` Click on the First dropdown and choose ${testdata.users[0]} for changing details of ${school}`, async () => {
+        it(` Click on the First dropdown and choose ${testdata.users[0]} for changing details of ${school} and Verify ${testdata.users[0]} is selected`, async () => {
             await selectUser.clickDropdown(testdata.dropdowns[0], testdata.users[0]);
             expect(await selectUser.$dropdown(testdata.users[0]).isDisplayed())
                 .withContext('Click on the First dropdown')
                 .toBeTrue();
         })
 
-        it(` Click on the Second dropdown and choose ${testdata.roles[0]} for changing details of ${school}`, async () => {
+        it(` Click on the Second dropdown and choose ${testdata.roles[0]} for changing details of ${school} and Verify ${testdata.roles[0]} is selected`, async () => {
             await selectUser.clickDropdown(testdata.dropdowns[1], testdata.roles[0]);
             expect(await selectUser.$dropdown(testdata.roles[0]).isDisplayed())
                 .withContext('Click on the Second dropdown')
                 .toBeTrue();
         })
 
-        it(' Click on the Select button for changing details of ${school}', async () => {
+        it(` Click on the Select button for changing details of ${school} and verify the header is present`, async () => {
             await selectUser.clickSelectButton();
             expect(await changeRequestPage.$header().isDisplayed())
                 .withContext('header is not displayed')
                 .toBeTrue();
         })
 
-        it(` Click on the Add Request button for changing details of ${school}`, async () => {
+        it(` Click on the Add Request button for changing details of ${school} and verify the dropdown is present`, async () => {
             await changeRequestPage.clickAddRequestButton();
             expect(await changeRequestPage.$dropdown(testdata.changeRequestDropdown[0]).isDisplayed())
                 .withContext('header is not displayed')
@@ -64,7 +64,7 @@ let currentCrId = 0;
 
         })
 
-        it(`Click on the dropdown and select educatoin ogrgatization for changing details of ${school}`, async () => {
+        it(`Click on the dropdown and select educatoin ogrgatization for changing details of ${school} .`, async () => {
             await changeRequestPage.selectDropdown(testdata.changeRequestDropdown[0], school)
 
         })
@@ -77,7 +77,7 @@ let currentCrId = 0;
         })
         for (let card of testdata.cards) {
             let j = 0;
-            it(`Select the ${card} Request Card of ${school}`, async () => {
+            it(`Select the ${card} Request Card of ${school} and verify the ${card} header is present`, async () => {
                 await changeRequestPage.$requestCard(card).waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
                 await changeRequestPage.requestCard(card);
                 expect(await changeRequestPage.$requestCardHeader(card).isDisplayed())
@@ -108,7 +108,7 @@ let currentCrId = 0;
             });
             
 
-            it(`Click on the Save button for changing details of ${school}`, async () => {
+            it(`Click on the Save button for changing details of ${school} and verify that the ${card} is activated with yellow header`, async () => {
                 await changeRequestPage.$buttonClick("Save").waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
                 await changeRequestPage.clickButton("Save");
                 await changeRequestPage.$activeCard(card).waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
@@ -119,7 +119,7 @@ let currentCrId = 0;
         }
 
 
-        it(`Click on the review and submit button for changing details of ${school}`, async () => {
+        it(`Click on the review and submit button for changing details of ${school} and verify that redirected to submit page`, async () => {
             await changeRequestPage.$submitButton().waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
             await changeRequestPage.submitButton();
             expect(await changeRequestPage.$requestStatus().isDisplayed())
@@ -127,8 +127,8 @@ let currentCrId = 0;
                 .toBeTrue();
         })
 
-        it(`Click submit for approval button for changing details of ${school}`, async () => {
-            // await changeRequestPage.$buttonClick("Submit for Approval").waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
+        it(`Click submit for approval button for changing details of ${school} and CR Id's are displayed.`, async () => {
+            await changeRequestPage.$submitCategory().waitForDisplayed({ timeout: 50000, timeoutMsg:"changes are not displyed"})
             await changeRequestPage.clickButton("Submit All");
             await changeRequestPage.$changeSuccess().waitForDisplayed({ timeout: 5000000, timeoutMsg: "not Submitted" })
             expect(await changeRequestPage.$changeSuccess().isDisplayed())
@@ -145,7 +145,7 @@ let currentCrId = 0;
 
         for (let i = 1; i < 4; i++) {
 
-            it(`Click on the select user Button for approving request of ${school}`, async () => {
+            it(`Click on the select user Button for approving request of ${school} for ${testdata.users[i]} and verify the user is selected`, async () => {
                 // await landingPage.spinnrerWait();
                 await landingPage.clickElements("Select User");
                 // await selectUser.spinnrerWait();
@@ -158,7 +158,7 @@ let currentCrId = 0;
                 console.log(i);
             })
 
-            it(`Click on the First dropdown for approving request of ${school}`, async () => {
+            it(`Click on the First dropdown for approving request of ${school} and Verify ${testdata.users[i]} is selected`, async () => {
                 await selectUser.spinnrerWait();
                 await selectUser.$dropdown(testdata.dropdowns[0]).waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
                 await selectUser.clickDropdown(testdata.dropdowns[0], testdata.users[i]);
@@ -167,7 +167,7 @@ let currentCrId = 0;
                     .toBeTrue();
             })
 
-            it(`Click on the Secound dropdown for approving request of ${school}`, async () => {
+            it(`Click on the Secound dropdown for approving request of ${school} and Verify ${testdata.roles[i]} is selected`, async () => {
                 await selectUser.spinnrerWait();
                 await selectUser.$dropdown(testdata.dropdowns[1]).waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
                 await selectUser.clickDropdown(testdata.dropdowns[1], testdata.roles[i]);
@@ -176,7 +176,7 @@ let currentCrId = 0;
                     .toBeTrue();
             })
 
-            it(`Click on the Select button for approving request of ${school}`, async () => {
+            it(`Click on the Select button for approving request of ${school} and verify the header is present`, async () => {
                 await selectUser.$selectButton().waitForDisplayed({ timeout: 500000, timeoutMsg: "not Submitted" });
                 await selectUser.clickSelectButton();
                 expect(await changeRequestPage.$header().isDisplayed())
@@ -185,7 +185,7 @@ let currentCrId = 0;
                 await selectUser.spinnrerWait();
             })
 
-            it(`Click on the request queue button for approving request of ${school}`, async () => {
+            it(`Click on the request queue button for approving request of ${school} and veriufy the header is present`, async () => {
                 await landingPage.clickElements("Approval Queue");
                 expect(await approverQue.$header().isDisplayed())
                     .withContext('header is not displayed')
@@ -196,7 +196,7 @@ let currentCrId = 0;
             for (let crID = 0; crID < crId.length; crID++)
                 {
 
-                    it(`Click on the Assign to me button of ${school} of ${crID+1}st request`, async () => {
+                    it(`Click on the Assign to me button of ${school} of ${crID+1}st request and verify it changes to ${testdata.users[i]}`, async () => {
                         currentCrId=crId[crID];
                         console.log(currentCrId);
                         await approverQue.clickAssign(currentCrId);
@@ -206,14 +206,14 @@ let currentCrId = 0;
                             .toBeTrue();
                     });
 
-                    it(`Click on the approver button of ${school} of ${crID+1}st request`, async () => {
+                    it(`Click on the approver button of ${school} of ${crID+1}st request and verify the header is present`, async () => {
                         await approverQue.clickApprover(currentCrId);
                         expect(await approverQue.$approveHeader().isDisplayed())
                             .withContext('Approve header is not displayed')
                             .toBeTrue();
                     });
 
-                    it(`Add comments of ${school} of ${crID+1}st request`, async () => {
+                    it(`Add comments of ${school} of ${crID+1}st request and verify the comments are displayed`, async () => {
                         await approverQue.addComments("Approved");
                     });
 
@@ -233,4 +233,5 @@ let currentCrId = 0;
         }
 
     }
-})
+}
+)
