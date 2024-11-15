@@ -1,34 +1,41 @@
-name: Edwise workflow
+name: Edwise Workflow
 on:
-    workflow_dispatch: # This allows manual triggering of the workflow
+  workflow_dispatch: # Allows manual triggering of the workflow
+
 jobs:
-    test:
-        permissions:
-            contents: read
-            pages: write
-            id-token: write
-        runs-on: ubuntu-latest
-        name: UI tests 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20
-                  cache: npm
-            - name: Install packages
-              run: npm install
-            - name: Execute tests
-              run: npm run wdio
-            - name: Install Allure CommandLine
-              if: always()
-              run: npm install -g allure-commandline
-            - name: Combine Allure
-              if: always()
-              run: npm run allureCombine
-            - name: Upload Test Report
-              if: always()
-              uses: actions/upload-artifact@v3
-              with:
-                  name: Allure report
-                  path: test/.artifacts/allure-report/complete.html # Ensure this path is correcthas context menu
+  test:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    name: UI Tests
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Packages
+        run: npm install
+
+      - name: Execute Tests
+        run: npm run wdio
+
+      - name: Install Allure CommandLine
+        if: always()
+        run: npm install -g allure-commandline
+
+      - name: Combine Allure Reports
+        if: always()
+        run: npm run allureCombine
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report # Ensure this path matches your Allure report output
