@@ -26,21 +26,46 @@ class changeRequestPage extends CommonPage{
         this.$spinnerform=()=>$(`(//div[@class="lds-spinner"])[1]`)
         
     }
+    /**
+     * @name clickAddRequestButton
+     * @description click on add request button
+     */
 
     async clickAddRequestButton() {
         await this.$addRequestButton().click();
     }
+
+    /**
+     * @name selectDropdown
+     * @description select dropdown and select element 
+     * 
+     * @param {string} dropdown 
+     * @param {string} element 
+     * @param {string} details 
+     */
     async selectDropdown(dropdown, element,details) {
         await this.$dropdown(dropdown).click();
         await this.$schools(element).click();
         //await this.$DetailsHeader(details).waitforDisplayed({ timeout: 50000, timeoutMsg: "Header should be present" });
     }
 
+    /**
+     * @name requestCard
+     * @description request card selection
+     * @param {string} card 
+     */
+
     async requestCard(card){
         await this.$requestCard(card).click();
 
 
     }
+    /**
+     * @name selectDropDown
+     * @description select dropdown
+     * @param {string} name 
+     * @param {string} value 
+     */
 
     async selectDropDown(name,value) {
         await this.$requestCardDropdown(name).click();

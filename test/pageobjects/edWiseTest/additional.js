@@ -10,11 +10,20 @@ class Additional extends CommonPage{
 
         
     }
+    /**
+     * @name changeRequest
+     * @descriptionClick on Change Request
+     * 
+     */
     async changeRequest(){
         await this.$changeRequestButton().click();
         // await this.$changeRequestHeader().waitforDisplayed({ timeout: 50000, timeoutMsg: "Header should be present" });
     }
-
+    /**
+     * @name storeCrId
+     * @description store the crId
+     * @returns crId
+     */
     async storeCrId() {
         let crId = [];
         let crCount = await this.$$crId().length;

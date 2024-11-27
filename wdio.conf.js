@@ -34,8 +34,9 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-    // 'test/specs/edwise.spec.js'
-    'test/specs/edWise.spec.js'
+    'test/specs/edwise.spec.js'
+    // 'test/specs/edWise.spec.js'
+    // 'test/specs/edwiseNew.spec.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -66,7 +67,7 @@ export const config = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headless','--disable-gpu', '--window-size=1920,1080'],
+            args: ['--headless','--disable-gpu', '--window-size=920,450'],
         },
     }],
    
@@ -437,7 +438,7 @@ beforeTest: async function () {
        
         converter.convertJSONFolderToExcel("test/.artifacts/json-reports");
        
-        const allurePromise = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(() => reject(reportError), 5000);
    
             generation.on('exit', function(exitCode) {
