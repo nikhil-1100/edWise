@@ -1,6 +1,7 @@
 name: Edwise workflow
 on:
-    workflow_dispatch: # This allows manual triggering of the workflow
+    workflow_dispatch: # Allows manual triggering of the workflow
+
 jobs:
     test:
         permissions:
@@ -8,27 +9,37 @@ jobs:
             pages: write
             id-token: write
         runs-on: ubuntu-latest
-        name: UI tests 
+        name: UI tests
         steps:
-            - uses: actions/checkout@v3
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
             - name: Setup Node.js
               uses: actions/setup-node@v3
               with:
                   node-version: 20
                   cache: npm
-            - name: Install packages
+
+            - name: Install Dependencies
               run: npm install
-            - name: Execute tests
+
+            - name: Create JSON Reports Directory
+              run: mkdir -p test/.artifacts/json-reports
+
+            - name: Execute Tests
               run: npm run wdio
+
             - name: Install Allure CommandLine
               if: always()
               run: npm install -g allure-commandline
-            - name: Combine Allure
+
+            - name: Generate Allure Report
               if: always()
               run: npm run allureCombine
-            - name: Upload Test Report
+
+            - name: Upload Allure Test Report
               if: always()
               uses: actions/upload-artifact@v3
               with:
-                  name: Allure report
-                  path: test/.artifacts/allure-report/complete.html # Ensure this path is correct
+                  name: Allure Report
+                  path: test/.artifacts/allure-report # Adjust path if needed

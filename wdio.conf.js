@@ -150,7 +150,7 @@ export const config = {
  //[ExcelReporter, { outputFile: 'test/.artifacts/test-results.xlsx' }],
  [
     JSONReporter,
-    { outputFile: "test/.artifacts/json-reports/test-results.json" },
+    { outputFile: "test/.artifacts/json-reports" },
   ],
 ],
    
