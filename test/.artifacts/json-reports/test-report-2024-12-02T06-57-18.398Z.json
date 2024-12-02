@@ -1,0 +1,562 @@
+[
+  {
+    "timestamp": "2024-12-02T06:54:51.889Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Load the URL successfully and verify the Header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:52.298Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the config button and verify the Select user  button is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:52.825Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the select user Button for changing details of Arizona City Elementary School and verify the dropdowns are present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:53.796Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the First dropdown and choose Sachin for changing details of Arizona City Elementary School and Verify Sachin is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:54.546Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the Second dropdown and choose LEA_Data_Admin for changing details of Arizona City Elementary School and Verify LEA_Data_Admin is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:55.694Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the Select button for changing details of Arizona City Elementary School and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:56.048Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Click on the Add Request button for changing details of Arizona City Elementary School and verify the dropdown is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:56.398Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the dropdown and select educatoin ogrgatization for changing details of Arizona City Elementary School .",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:58.664Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": " Select the category dropdown and select Arizona City Elementary School",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:54:58.973Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Select the Address Request Card of Arizona City Elementary School and verify the Address header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:02.391Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Fill the Address Request Card Details of Arizona City Elementary School",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:04.741Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Save button for changing details of Arizona City Elementary School and verify that the Address is activated with yellow header",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:04.908Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Select the Phone Request Card of Arizona City Elementary School and verify the Phone header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:06.526Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Fill the Phone Request Card Details of Arizona City Elementary School",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:06.707Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Save button for changing details of Arizona City Elementary School and verify that the Phone is activated with yellow header",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:07.377Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Select the Website Request Card of Arizona City Elementary School and verify the Website header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:08.359Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Fill the Website Request Card Details of Arizona City Elementary School",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:08.578Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Save button for changing details of Arizona City Elementary School and verify that the Website is activated with yellow header",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:09.202Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the review and submit button for changing details of Arizona City Elementary School and verify that redirected to submit page",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:17.999Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click submit for approval button for changing details of Arizona City Elementary School and CR Id's are displayed.",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:18.139Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the select user Button for approving request of Arizona City Elementary School for Approver1 and verify the user is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:18.895Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the First dropdown for approving request of Arizona City Elementary School and Verify Approver1 is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:19.679Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Secound dropdown for approving request of Arizona City Elementary School and Verify LEA_Superintendent is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:26.541Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Select button for approving request of Arizona City Elementary School and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:26.684Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the request queue button for approving request of Arizona City Elementary School and veriufy the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:32.829Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 1st request and verify it changes to Approver1",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:39.057Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 1st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:40.360Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 1st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:40.574Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:41.706Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:47.392Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 2st request and verify it changes to Approver1",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:53.111Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 2st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:54.276Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 2st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:54.438Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:55:55.556Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:01.226Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 3st request and verify it changes to Approver1",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:06.525Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 3st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:08.657Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 3st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:08.794Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:09.906Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:10.079Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the select user Button for approving request of Arizona City Elementary School for Approver2 and verify the user is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:10.828Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the First dropdown for approving request of Arizona City Elementary School and Verify Approver2 is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:12.055Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Secound dropdown for approving request of Arizona City Elementary School and Verify State_Data_Admin is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:21.914Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Select button for approving request of Arizona City Elementary School and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:22.125Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the request queue button for approving request of Arizona City Elementary School and veriufy the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:25.817Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 1st request and verify it changes to Approver2",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:28.481Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 1st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:30.170Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 1st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:30.338Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:31.454Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:34.176Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 2st request and verify it changes to Approver2",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:37.860Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 2st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:39.556Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 2st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:39.741Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:40.887Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:44.493Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 3st request and verify it changes to Approver2",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:47.694Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 3st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:49.340Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 3st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:49.535Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:51.181Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:51.349Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the select user Button for approving request of Arizona City Elementary School for Approver3 and verify the user is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:52.105Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the First dropdown for approving request of Arizona City Elementary School and Verify Approver3 is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:52.788Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Secound dropdown for approving request of Arizona City Elementary School and Verify State_Dept_Head is selected",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:59.581Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Select button for approving request of Arizona City Elementary School and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:56:59.738Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the request queue button for approving request of Arizona City Elementary School and veriufy the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:01.979Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 1st request and verify it changes to Approver3",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:03.124Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 1st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:04.286Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 1st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:04.442Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:06.077Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 1st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:06.324Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 2st request and verify it changes to Approver3",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:06.980Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 2st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:08.225Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 2st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:08.372Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:09.483Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 2st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:13.459Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the Assign to me button of Arizona City Elementary School of 3st request and verify it changes to Approver3",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:15.131Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the approver button of Arizona City Elementary School of 3st request and verify the header is present",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:16.293Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Add comments of Arizona City Elementary School of 3st request and verify the comments are displayed",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:16.458Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the status dropdown and set it to Approved of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  },
+  {
+    "timestamp": "2024-12-02T06:57:18.100Z",
+    "suiteName": "EdWise testsuite1",
+    "testName": "Click on the submit button and verify submission of Arizona City Elementary School of 3st request",
+    "status": "PASSED",
+    "error": ""
+  }
+]
