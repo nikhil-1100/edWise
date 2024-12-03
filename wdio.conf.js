@@ -437,7 +437,7 @@ beforeTest: async function () {
        
         converter.convertJSONFolderToExcel("test/.artifacts/json-reports");
        
-        const allurePromise = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(() => reject(reportError), 5000);
    
             generation.on('exit', function(exitCode) {
